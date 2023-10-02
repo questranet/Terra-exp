@@ -7,3 +7,4 @@ azs = ["us-east-1a", "us-east-1b"]
 default_vpc_id = "vpc-0e1835f8eaa25eb69"
 account_no = "008089408493"
 default_vpc_cidr = "172.31.0.0/16"
+default_route_table_id = "rtb-0ca16b41ede248963"
