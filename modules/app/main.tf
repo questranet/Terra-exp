@@ -79,7 +79,7 @@ resource "aws_launch_template" "template" {
   vpc_security_group_ids = [aws_security_group.security_group.id]
 
   iam_instance_profile {
-    name = aws_iam_instance_profile.instance_profile.name
+    name = aws_iam_role.role.name
   }
 
   user_data              = base64encode(templatefile("${path.module}/userdata.sh", {
