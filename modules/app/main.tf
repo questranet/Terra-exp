@@ -52,15 +52,16 @@ resource "aws_iam_role" "role" {
 
     policy = jsonencode({
       "Version" : "2012-10-17",
-      "Statement" : [       "Effect" : "Allow",
-        "Action" : [
-          "ssm:DescribeParameters",
-          "ssm:GetParametersByPath",
-          "ssm:GetParameters",
-          "ssm:GetParameter
+      "Statement" : [
         {
           "Sid" : "VisualEditor0",
-   "
+          "Effect" : "Allow",
+          "Action" : [
+            "ssm:DescribeParameters",
+            "ssm:GetParameterHistory",
+            "ssm:GetParametersByPath",
+            "ssm:GetParameters",
+            "ssm:GetParameter"
           ],
           "Resource" : "*"
         }
