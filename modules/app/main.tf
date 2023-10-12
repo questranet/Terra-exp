@@ -94,7 +94,7 @@ resource "aws_launch_template" "template" {
     env       = var.env
   }))
 
-tag_specifications {
+  tag_specifications {
     resource_type = "instance"
     tags = {
       Name = "${var.env}-${var.component}"
