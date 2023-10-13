@@ -38,7 +38,7 @@ module "private-lb" {
 }
 
 module "frontend" {
-  source = "./modules/app"
+  source                 = "./modules/app"
   app_port               = 80
   component              = "frontend"
   env                    = var.env
@@ -69,7 +69,7 @@ module "backend" {
 }
 
 module "mysql" {
-  source = "./modules/rds"
+  source         = "./modules/rds"
   component      = "mysql"
   env            = var.env
   subnets        = module.vpc.private_subnets
