@@ -71,6 +71,6 @@ resource "aws_lb_listener" "listener-https"
 
   default_action {
     type                    = "forward"
-    target_group_arn        =var.tg_arn
+    target_group_arn        = var.tg_arn
   }
 }
