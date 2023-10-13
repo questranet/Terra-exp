@@ -31,6 +31,7 @@ module "private-lb" {
   vpc_id            = module.vpc.vpc_id
   dns_name          = "backend-${var.env}.waleapagun.online"
   zone_id           = "Z08999912AI7EUJ47AGDO"
+  tg_arn            = module.backend.tg_arn
 }
 #
 #module "frontend" {
