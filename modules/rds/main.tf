@@ -44,7 +44,7 @@ resource "aws_rds_cluster" "main" {
   skip_final_snapshot     = true
 }
 
-resource "aws_rds_cluster_instance" "cluster_instances" {
+resource "aws_rds_cluster_instance" "main" {
   count              = 1
   identifier         = "aurora-cluster-demo-${count.index}-instance-${count.index}"
   cluster_identifier = aws_rds_cluster.main.id
