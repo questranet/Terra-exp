@@ -12,4 +12,4 @@ bastion_node_cidr      = ["172.31.24.238/32"]
 desired_capacity       = 1
 max_size               = 1
 min_size               = 1
-instance_class         = "db_t3.medium"
+instance_class         = "db.t3.medium"
