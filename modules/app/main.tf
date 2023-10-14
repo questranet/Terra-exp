@@ -18,6 +18,15 @@ resource "aws_security_group" "security_group" {
     protocol    = "tcp"
     cidr_blocks = var.bastion_node_cidr
   }
+
+  ingress{
+    description = "PROMETHEUS"
+    from_port   = 9100
+    to_port     = 9100
+    protocol    = "tcp"
+    cidr_blocks = var.prometheus_cidr
+  }
+
   egress {
     from_port   = 0
     to_port     = 0
@@ -103,12 +112,12 @@ resource "aws_launch_template" "template" {
 }
 
 resource "aws_autoscaling_group" "asg" {
-  name               = "${var.env}-${var.component}"
-  desired_capacity   = var.desired_capacity
-  max_size           = var.max_size
-  min_size           = var.min_size
+  name                = "${var.env}-${var.component}"
+  desired_capacity    = var.desired_capacity
+  max_size            = var.max_size
+  min_size            = var.min_size
   vpc_zone_identifier = var.subnets
-  target_group_arns  = [aws_lb_target_group.tg.arn]
+  target_group_arns   = [aws_lb_target_group.tg.arn]
 
   launch_template {
     id      = aws_launch_template.template.id
