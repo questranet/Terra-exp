@@ -78,4 +78,5 @@ module "private-lb" {
 #  vpc_cidr       = var.vpc_cidr
 #  vpc_id         = module.vpc.vpc_id
 #  instance_class = var.instance_class
+#  kms_key_id     = var.kms_key_id
 #}
