@@ -85,7 +85,10 @@ module "vpc" {
 
 module "eks" {
   source = "./modules/eks"
-  project_name    = var.project_name
-  env             = var.env
-  subnet_ids      = module.vpc.private_subnets
+
+  project_name   = var.project_name
+  env            = var.env
+  subnet_ids     = module.vpc.private_subnets
+  instance_types = var.instance_types
+  node_count     = var.node_count
 }
