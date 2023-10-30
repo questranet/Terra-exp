@@ -33,3 +33,12 @@ resource "aws_iam_role_policy_attachment" "AmazonEKSVPCResourceController" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSVPCResourceController"
   role       = aws_iam_role.main.name
 }
+
+resource "null_resource" "aws-auth" {
+  provisioner "local-exec" {
+    command = <<EOF
+aws eks update-kubeconfig --name ${var.env}-${var.project_name}
+aws-auth upsert --mapusers --userarn arn:aws:iam::008089408493:user/wale --username wale --groups system:masters
+EOF
+  }
+}
