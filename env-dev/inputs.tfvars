@@ -14,3 +14,7 @@ max_size               = 1
 min_size               = 1
 instance_class         = "db.t3.medium"
 prometheus_cidr        = ["172.31.16.34/32"]
+
+##eks
+node_count             = 2
+instance_types         = ["t3.large"]
