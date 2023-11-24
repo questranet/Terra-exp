@@ -60,16 +60,13 @@ data "external" "thumbprint" {
   program    = ["bash", "${path.module}/thumbprint.sh", "${var.env}-${var.project_name}"]
 }
 
-#resource "aws_iam_openid_connect_provider" "eks" {
-#  url = aws_eks_cluster.main.identity[0].oidc[0].issuer
-#
-#  client_id_list = [
-#    split("/", aws_eks_cluster.main.identity[0].oidc[0].issuer)[4]
-#  ]
-#
-#  thumbprint_list = [data.external.thumprint.result]
-#}
+resource "aws_iam_openid_connect_provider" "eks" {
+  url = aws_eks_cluster.main.identity[0].oidc[0].issuer
 
-output "result" {
-  value = data.external.thumbprint.result
+  client_id_list = [
+    split("/", aws_eks_cluster.main.identity[0].oidc[0].issuer)[4]
+  ]
+
+  thumbprint_list = [element(data.external.thumbprint.result, "thumbprint")]
 }
+

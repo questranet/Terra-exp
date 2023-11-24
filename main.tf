@@ -93,6 +93,3 @@ module "eks" {
   node_count     = var.node_count
 }
 
-output "result" {
-  value = module.eks
-}
