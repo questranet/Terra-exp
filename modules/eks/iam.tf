@@ -67,6 +67,6 @@ resource "aws_iam_openid_connect_provider" "eks" {
     split("/", aws_eks_cluster.main.identity[0].oidc[0].issuer)[4]
   ]
 
-  thumbprint_list = [lookuo(data.external.thumbprint.result, "thumbprint", null)]
+  thumbprint_list = [lookup(data.external.thumbprint.result, "thumbprint", null)]
 }
 
