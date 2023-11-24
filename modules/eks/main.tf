@@ -31,16 +31,12 @@ resource "aws_eks_node_group" "main" {
   }
 }
 
-#resource "aws_eks_identity_provider_config" "main" {
-#  cluster_name = aws_eks_cluster.main.name
-#
-#  oidc {
-#    client_id                     = "your client_id"
-#    identity_provider_config_name = "example"
-#    issuer_url                    = "your issuer_url"
-#  }
-#}
+resource "aws_eks_identity_provider_config" "main" {
+  cluster_name = aws_eks_cluster.main.name
 
-output "eks" {
-  value = aws_eks_cluster.main
+  oidc {
+    client_id                     = split("/", aws_eks_cluster.main.identity[0].oidc[0].issuer)[4]
+    identity_provider_config_name = "oidc"
+    issuer_url                    = aws_eks_cluster.main.identity[0].oidc[0].issuer)[0]
+  }
 }
