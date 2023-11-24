@@ -71,5 +71,5 @@ data "external" "thumbprint" {
 #}
 
 output "result" {
-  value = data.external.thumprint.result
+  value = data.external.thumbprint.result
 }
