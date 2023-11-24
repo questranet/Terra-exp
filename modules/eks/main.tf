@@ -37,6 +37,6 @@ resource "aws_eks_identity_provider_config" "main" {
   oidc {
     client_id                     = split("/", aws_eks_cluster.main.identity[0].oidc[0].issuer)[4]
     identity_provider_config_name = "oidc"
-    issuer_url                    = aws_eks_cluster.main.identity[0].oidc[0].issuer)
+    issuer_url                    = aws_eks_cluster.main.identity[0].oidc[0].issuer
   }
 }
