@@ -54,3 +54,13 @@ resource "aws_iam_role_policy_attachment" "AmazonEC2ContainerRegistryReadOnly" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
   role       = aws_iam_role.node.name
 }
+
+resource "aws_iam_openid_connect_provider" "eks" {
+  url = aws_eks_cluster.main.identity[0].oidc[0].issuer
+
+  client_id_list = [
+    split("/", aws_eks_cluster.main.identity[0].oidc[0].issuer)[4]
+  ]
+
+  thumbprint_list = ["9e99a48a9960b14926bb7f3b02e22da2b0ab7280"]
+}
